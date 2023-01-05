@@ -1,0 +1,14 @@
+customer_id
+gender_cd
+postal_cd
+application_store_cd
+status_cd
+category_major_cd
+category_medium_cd
+category_small_cd
+product_cd
+store_cd
+prefecture_cd
+tel_no
+postal_cd
+street

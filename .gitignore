@@ -1,0 +1,8 @@
+*.db
+!sample_data/db/.gitkeep
+module/db_local.txt
+module/csv_reader.txt
+module/__pycache__
+.ipynb_checkpoints
+.DS_Store
+draft.ipynb
