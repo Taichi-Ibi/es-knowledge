@@ -72,11 +72,19 @@ def main():
             # 前後の行を取得する
             r_dict['index_added'] = collect_neighbor(
                 r_dict['index'], n_before=args.before, n_after=args.after)
+            # 最大桁数を取得する
+            if r_dict['count']:
+                r_dict['max_digits'] = len(str(max(r_dict['index_added'])))
             # ファイルの行数からはみ出たものは除外
             r_dict['index_added'] = \
                 [i for i in r_dict['index_added'] if i in range(0, len(lines))]
             # 検索結果を辞書に追加
             result.append(r_dict)
+
+    # idx = ['a', 'sbc']
+    # idx = [i.rjust(3) for i in idx]
+    # for i in idx:
+    #     print(idx)
 
     # 出力を作成
     big_output = []
@@ -97,7 +105,7 @@ def main():
                     line = r.get('lines')[idx]
                     # -iの処理 行番号を表示
                     if args.index: 
-                        line = '  '.join([str(idx),line])
+                        line = '  '.join([str(idx).rjust(r.get('max_digits')),line])
                     # -mの処理 マッチした行をハイライト
                     if not args.mark: 
                         pass
