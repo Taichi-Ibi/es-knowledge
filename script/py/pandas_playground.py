@@ -260,9 +260,9 @@ customer.merge(store[['store_name', 'longitude', 'latitude']], on='store_name', 
 
 # 時系列データに欠損がある場合に有用
 ymd = list(range(20230101, 20230104, 1))
-store = ['small', 'large']
-df1 = pd.DataFrame({'ymd': np.repeat(ymd, len(store)),
-                   'store': store*len(ymd)})
+stores = ['small', 'large']
+df1 = pd.DataFrame({'ymd': np.repeat(ymd, len(stores)),
+                   'stores': stores*len(ymd)})
 df1
 
 
@@ -272,11 +272,11 @@ df1
 
 
 # 1列増やしたい場合は、ユニーク数の少ない列同士で全結合してからマージすると良い
-store = ['small', 'large']
+stores = ['small', 'large']
 gender = ['male', 'female']
-df2 = pd.DataFrame({'store': np.repeat(store, len(gender)),
-                   'gender': gender*len(store)})
-df1.merge(df2).sort_values(['ymd', 'store', 'gender'])
+df2 = pd.DataFrame({'stores': np.repeat(stores, len(gender)),
+                   'gender': gender*len(stores)})
+df1.merge(df2).sort_values(['ymd', 'stores', 'gender'])
 
 
 # ### 特定のデータにフラグを立てる
@@ -329,7 +329,7 @@ customer['gender_cd'].replace('9', '-9999')[:5]
 
 
 # 電話番号のハイフンを削除する
-store['tel_no'].map(lambda x: x.replace('-',''))[:5]
+store['tel_no'].apply(lambda x: x.replace('-',''))
 
 
 # ---

@@ -71,7 +71,8 @@ def main():
     # 検索結果を辞書に追加
     result = []
     for path in paths:
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
+            # TODO ipynbなどで改行区切りできないときの処理
             lines = re.split("[\n|\r|\r\n]", f.read())
             r_dict = {}
             r_dict["path"] = path
